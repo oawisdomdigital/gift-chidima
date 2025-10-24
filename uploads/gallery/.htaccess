@@ -1,0 +1,18 @@
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET, OPTIONS"
+Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+
+# Enable CORS for all media files
+<FilesMatch "\.(mp4|webm|ogg|jpg|jpeg|png|gif)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "*"
+</FilesMatch>
+
+# Proper MIME types
+AddType video/mp4 .mp4
+AddType video/webm .webm
+AddType video/ogg .ogg
+AddType image/jpeg .jpg .jpeg
+AddType image/png .png
+AddType image/gif .gif

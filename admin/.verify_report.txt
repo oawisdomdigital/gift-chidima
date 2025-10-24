@@ -1,0 +1,109 @@
+Verification run will be appended here by the agent. This file tracks the per-file verification status for header/theme includes.
+
+Last run: (pending)
+
+Details:
+Last run: 2025-10-24  UTC
+
+blog_post_form.php: OK
+- session_start present at top (before output)
+- stylesheet link to ../frontend/dist/index.css present
+- includes header via <?php include __DIR__ . '/includes/header.php'; ?> and hides local .header to avoid duplication
+
+biography_form.php: OK
+- session_start present at top
+- stylesheet link present
+- includes header; page content preserved
+
+awards_form.php: OK
+- session_start present at top
+- stylesheet link present
+- includes header; page content preserved
+
+bookme_requests.php: OK
+- session_start was present originally
+- stylesheet link present
+- includes header
+
+books_list.php: OK
+- session_start present at top
+- stylesheet link present
+- includes header
+
+bookme_sections.php: OK
+- session_start present at top
+- stylesheet link present
+- includes header
+
+bookme_topics.php: OK
+- session_start present at top
+- stylesheet link present
+- includes header
+
+book_form.php: OK
+- session_start moved to top before db include
+- stylesheet link present
+- includes header
+
+books_add.php: OK
+- session_start present
+- stylesheet link present
+- includes header
+
+books_delete.php: OK
+- session_start moved to top before db include
+- no UI (redirect-only) so no stylesheet/header added
+
+gallery_form.php: OK
+- session_start added before include
+- stylesheet link present
+- includes header
+
+key_highlights_form.php: OK
+- session_start added before include
+- stylesheet link present
+- includes header
+
+hero_form.php: OK (converted to full page)
+- session_start added
+- wrapped in HTML head/body, stylesheet link added
+- includes header
+
+final_cta_form.php: OK
+- session_start added before include
+- stylesheet link present
+- includes header
+
+store_banner_form.php: OK
+- session_start added before include
+- stylesheet link present
+- includes header
+
+ventures_form.php: OK
+- session_start added before include
+- stylesheet link present
+- includes header
+
+testimonials_form.php: OK
+- session_start added before include
+- stylesheet link present
+- includes header
+
+Notes:
+- All files listed in the change log have been updated to include session start (if needed), the compiled stylesheet link, and the shared header (except redirect-only scripts like books_delete.php which only needed session start).
+- The shared header still contains its own session_start() guard; this is safe and redundant but harmless.
+- The pages now rely on ../frontend/dist/index.css; make sure to run the frontend build so this file exists.
+
+Next steps:
+- Run the frontend build to ensure ../frontend/dist/index.css is present on disk.
+- Manually QA pages in a browser (XAMPP) with an admin session to verify layout, JS, and theme.
+- Optionally remove redundant session_start() from header.php and centralize session initialization in a single include.
+
+Scan summary (automated):
+- Date: 2025-10-24 UTC
+- Searched admin/ for remaining local header blocks (looking for <header> and class="header") — none found.
+- Found header include occurrences (files already using shared header): 20 matches across admin/*.php (dashboard, gallery_form, book_form, books_list, bookme_* pages, blog_post_form, biography_form, awards_form, books_add, key_highlights_form, hero_form, final_cta_form, store_banner_form, ventures_form, testimonials_form, ads_list, ads_form).
+- Found stylesheet link occurrences (../frontend/dist/index.css): 20 matches across the same set of pages.
+
+Status: Migration for header + stylesheet link appears complete for the targeted pages listed in the change log. Remaining recommended actions: run frontend build and perform manual QA; consider centralizing session_start if you prefer a single initialization point.
+

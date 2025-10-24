@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "batch-edit-admin-pages",
+			"type": "shell",
+			"command": "echo noop",
+			"args": [],
+			"isBackground": false
+		}
+	]
+}

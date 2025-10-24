@@ -1,0 +1,2 @@
+Patches will add frontend/dist/index.css link and include 'includes/header.php' after <body> for selected admin pages.
+Files targeted: blog_post_form.php, biography_form.php, awards_form.php, bookme_requests.php, bookme_sections.php, bookme_topics.php, books_list.php, book_form.php, books_add.php, books_delete.php, gallery_form.php, key_highlights_form.php, hero_form.php, final_cta_form.php, store_banner_form.php, ventures_form.php, testimonials_form.php
