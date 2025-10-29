@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Medal, Star, Trophy } from 'lucide-react';
+import { Trophy } from 'lucide-react';
 import { SectionWrapper } from './SectionWrapper';
+import { apiUrl, mediaPath } from '../lib/config';
 
 interface Award {
   award_title: string;
@@ -19,7 +20,7 @@ export function AwardsSection() {
   const [media, setMedia] = useState<Media[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost/myapp/api/get_awards.php')
+  fetch(apiUrl('get_awards.php'))
       .then(res => res.json())
       .then(data => {
         setHeading(data.heading || '');
@@ -60,7 +61,7 @@ export function AwardsSection() {
             >
               <div className="flex-shrink-0 mt-1">
                 <img
-                  src={`http://localhost/myapp/${award.award_icon}`}
+                  src={mediaPath(award.award_icon)}
                   alt=""
                   className="w-8 h-8 object-contain"
                   onError={(e) => (e.currentTarget.src = '/images/placeholder-logo.png')}
@@ -84,7 +85,7 @@ export function AwardsSection() {
             {media.map((m, index) => (
               <div key={index} className="aspect-[3/2] bg-white/5 rounded-xl border border-white/10 flex items-center justify-center p-6 hover:bg-white/10 transition-all">
                 <img
-                  src={`http://localhost/myapp/${m.media_logo}`}
+                  src={mediaPath(m.media_logo)}
                   alt="Media Logo"
                   className="max-h-10 object-contain"
                   onError={(e) => (e.currentTarget.src = '/images/placeholder-logo.png')}

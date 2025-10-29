@@ -3,6 +3,7 @@ import { ShoppingBag, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { SectionWrapper } from "./SectionWrapper";
+import { apiUrl, mediaPath } from '../lib/config';
 import { useEffect, useState } from "react";
 
 interface Book {
@@ -24,37 +25,23 @@ interface StoreBannerData {
 
 export function StoreBanner() {
   const [data, setData] = useState<StoreBannerData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchBanner = async () => {
+    const fetchData = async () => {
       try {
-        setLoading(true);
-        setError(null);
-        const response = await fetch("http://localhost/myapp/api/get_store_banner.php");
-
+        const response = await fetch(`${apiUrl}/get_books.php`);
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error('Failed to fetch store banner data');
         }
 
-        const json = await response.json();
-        if (json.success) {
-          setData({ ...json.banner, books: json.books });
-        } else {
-          throw new Error(json.error || "Failed to load banner data");
-        }
-      } catch (err) {
-        console.error("Error loading banner:", err);
-        setError(
-          err instanceof Error ? err.message : "An error occurred while loading the banner"
-        );
-      } finally {
-        setLoading(false);
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching store banner data:', error);
       }
     };
 
-    fetchBanner();
+    fetchData();
   }, []);
 
   if (!data) return null;
@@ -120,14 +107,14 @@ export function StoreBanner() {
                         src={
                           book.cover_image.startsWith("http")
                             ? book.cover_image
-                            : `http://localhost/myapp/${book.cover_image.replace(/^\/+/, "")}`
+                            : mediaPath(book.cover_image.replace(/^\/+/, ""))
                         }
                         alt={book.title}
                         onError={(e) => {
                           console.error("Image load error:", book.cover_image);
                           const target = e.target as HTMLImageElement;
                           target.onerror = null;
-                          target.src = "http://localhost/myapp/uploads/default_cover.png";
+                          target.src = mediaPath('uploads/default_cover.png');
                         }}
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />

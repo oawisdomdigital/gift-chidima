@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
+import { apiUrl, mediaPath } from '../lib/config';
 import { GalleryItem } from "../components/GalleryItem";
 import { Lightbox } from "../components/Lightbox";
 
@@ -22,7 +23,7 @@ export function Gallery() {
 
   // Fetch gallery data from backend
   useEffect(() => {
-    fetch("http://localhost/myapp/api/get_gallery.php")
+    fetch(apiUrl('get_gallery.php'))
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch gallery");
         return res.json();
@@ -131,5 +132,5 @@ export function Gallery() {
 function normalizePath(path: string): string {
   if (!path) return "";
   if (path.startsWith("http")) return path;
-  return `http://localhost/myapp/${path.replace("../", "")}`;
+  return mediaPath(path.replace("../", ""));
 }

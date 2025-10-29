@@ -14,7 +14,7 @@ export interface BlogPost {
   featured?: boolean;
 }
 
-const API_BASE = "http://localhost/myapp/api"; // adjust if needed
+import { apiUrl } from '../lib/config';
 
 async function fetchJson(url: string) {
   const res = await fetch(url);
@@ -35,7 +35,7 @@ export async function getPosts(options?: {
   if (options?.limit) params.set('limit', String(options.limit));
   if (options?.q) params.set('q', options.q);
 
-  const url = `${API_BASE}/get_blog_posts.php?${params.toString()}`;
+  const url = `${apiUrl('get_blog_posts.php')}?${params.toString()}`;
   const json = await fetchJson(url);
   if (json.success) return json.posts as BlogPost[];
   throw new Error(json.error || 'Failed to load posts');
@@ -44,7 +44,7 @@ export async function getPosts(options?: {
 /** Get a single post by id or slug */
 export async function getPostById(idOrSlug: string): Promise<BlogPost | undefined> {
   // try slug first
-  const bySlug = `${API_BASE}/get_post.php?slug=${encodeURIComponent(idOrSlug)}`;
+  const bySlug = `${apiUrl('get_post.php')}?slug=${encodeURIComponent(idOrSlug)}`;
   try {
     const json = await fetchJson(bySlug);
     if (json.success) return json.post as BlogPost;
@@ -52,7 +52,7 @@ export async function getPostById(idOrSlug: string): Promise<BlogPost | undefine
     // if slug lookup fails, try id
   }
 
-  const byId = `${API_BASE}/get_post.php?id=${encodeURIComponent(idOrSlug)}`;
+  const byId = `${apiUrl('get_post.php')}?id=${encodeURIComponent(idOrSlug)}`;
   const json = await fetchJson(byId);
   if (json.success) return json.post as BlogPost;
   return undefined;

@@ -1,16 +1,18 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Handle preflight OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+     http_response_code(200);
+     exit();
+}
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '-1');
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, OPTIONS");
-header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Range");
-header("Access-Control-Expose-Headers: Content-Length, Content-Range, Content-Type");
-
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(204);
-    exit();
-}
+// Use centralized CORS handling for media endpoints
+require_once __DIR__ . '/cors.php';
 
 $file = isset($_GET['file']) ? urldecode($_GET['file']) : '';
 

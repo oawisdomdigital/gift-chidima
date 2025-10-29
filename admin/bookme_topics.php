@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../db.php');
-if (empty($_SESSION['admin_id'])) { header('Location: login.php'); exit; }
+require_once(__DIR__ . '/includes/auth.php');
 
 // Handle topic deletion
 if (isset($_GET['delete'])) {
@@ -35,12 +35,10 @@ while ($row = $result->fetch_assoc()) {
 // Available icons
 $available_icons = ['Lightbulb', 'Users', 'Target', 'Heart', 'Sparkles', 'BookOpen', 'Brain', 'Gem', 'Star', 'Trophy'];
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Manage Speaking Topics</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<?php
+$page_title = 'Manage Speaking Topics';
+include 'includes/head.php';
+?>
 <style>
   /* Smooth transitions for theme toggle */
   body, input, select, textarea, button {
@@ -64,7 +62,6 @@ $available_icons = ['Lightbulb', 'Users', 'Target', 'Heart', 'Sparkles', 'BookOp
   body.dark-mode .text-gray-100 { color: #f1f5f9 !important; }
   body.dark-mode .border-gray-600 { border-color: #475569 !important; }
 </style>
-</head>
 <body class="bg-gray-100 text-gray-900 min-h-screen transition-colors duration-300">
 
 <?php include __DIR__ . '/includes/header.php'; ?>

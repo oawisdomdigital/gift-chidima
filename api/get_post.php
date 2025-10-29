@@ -1,8 +1,15 @@
 <?php
-header('Content-Type: application/json; charset=utf-8');
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-include(__DIR__ . '/../db.php');
+// Handle preflight OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+require_once __DIR__ . '/api.php';
 
 $id = isset($_GET['id']) ? trim($_GET['id']) : null;   // numeric id
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : null;

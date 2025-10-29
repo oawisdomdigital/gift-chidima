@@ -1,5 +1,15 @@
 <?php
-require_once('../db.php');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Handle preflight OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+require_once __DIR__ . '/api.php';
 // Protect admin API: require session-based admin auth
 if (session_status() === PHP_SESSION_NONE) session_start();
 if (empty($_SESSION['admin_logged_in'])) {
@@ -7,8 +17,6 @@ if (empty($_SESSION['admin_logged_in'])) {
     echo json_encode(['success' => false, 'message' => 'Unauthorized']);
     exit();
 }
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $type = $_GET['type'] ?? '';

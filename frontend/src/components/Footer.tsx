@@ -1,8 +1,39 @@
+import { useEffect, useState } from 'react';
 import { Mail, Linkedin, Twitter, Instagram, Facebook, Heart } from 'lucide-react';
 import { Separator } from './ui/separator';
+import { apiUrl } from '../lib/config';
+
+interface FooterContent {
+  heading: string;
+  description: string;
+  email: string;
+  linkedin_url: string;
+  twitter_url: string;
+  instagram_url: string;
+  facebook_url: string;
+  privacy_url: string;
+  terms_url: string;
+}
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [content, setContent] = useState<FooterContent | null>(null);
+
+  useEffect(() => {
+    const fetchFooterContent = async () => {
+      try {
+        const response = await fetch(apiUrl('get_footer.php'));
+        const data = await response.json();
+        if (data.success && data.footer) {
+          setContent(data.footer);
+        }
+      } catch (error) {
+        console.error('Error fetching footer content:', error);
+      }
+    };
+
+    fetchFooterContent();
+  }, []);
 
   const navigation = {
     main: [
@@ -14,14 +45,14 @@ export function Footer() {
       { name: 'Book Me', href: '/book-me' },
     ],
     legal: [
-      { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Privacy Policy', href: content?.privacy_url || '/privacy' },
+      { name: 'Terms of Service', href: content?.terms_url || '/terms' },
     ],
     social: [
-      { name: 'LinkedIn', icon: Linkedin, href: '#' },
-      { name: 'Twitter', icon: Twitter, href: '#' },
-      { name: 'Instagram', icon: Instagram, href: '#' },
-      { name: 'Facebook', icon: Facebook, href: '#' },
+      { name: 'LinkedIn', icon: Linkedin, href: content?.linkedin_url || '#' },
+      { name: 'Twitter', icon: Twitter, href: content?.twitter_url || '#' },
+      { name: 'Instagram', icon: Instagram, href: content?.instagram_url || '#' },
+      { name: 'Facebook', icon: Facebook, href: content?.facebook_url || '#' },
     ],
   };
 
@@ -31,19 +62,18 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-2">
             <h3 className="font-['Playfair_Display'] text-3xl font-bold text-white mb-4">
-              Dr. Gift Chidima Nnamoko Orairu
+              {content?.heading || 'Dr. Gift Chidima Nnamoko Orairu'}
             </h3>
             <p className="text-slate-400 leading-relaxed mb-6 max-w-md">
-              Empowering a new generation of African leaders through purpose, mentorship,
-              and transformation.
+              {content?.description || 'Empowering a new generation of African leaders through purpose, mentorship, and transformation.'}
             </p>
             <div className="flex items-center gap-2 text-slate-400">
               <Mail className="w-5 h-5" />
               <a
-                href="mailto:contact@drgift.com"
+                href={`mailto:${content?.email || 'contact@drgift.com'}`}
                 className="hover:text-accent transition-colors"
               >
-                contact@drgift.com
+                {content?.email || 'contact@drgift.com'}
               </a>
             </div>
           </div>

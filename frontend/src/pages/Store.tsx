@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
+import { apiUrl } from '../lib/config';
 import { BookCard } from "../components/BookCard";
 import { BookModal } from "../components/BookModal";
 
@@ -28,13 +29,17 @@ export function Store() {
     const fetchBooks = async () => {
       try {
         setLoading(true);
-        const response = await fetch("http://localhost/myapp/api/get_books.php");
+        const response = await fetch(apiUrl("get_books.php"));
         if (!response.ok) throw new Error("Failed to fetch books");
 
         const data = await response.json();
+        
+        if (!data.books || !Array.isArray(data.books)) {
+          throw new Error("Invalid response format");
+        }
 
         setBooks(
-          data.map((b: any) => ({
+          data.books.map((b: any) => ({
             ...b,
             detailedDescription: b.detailed_description,
             keyLessons: b.key_lessons,

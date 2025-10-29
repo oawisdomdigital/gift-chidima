@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "./SectionWrapper";
+import { apiUrl, mediaPath } from '../lib/config';
 
 interface BioContent {
   title: string;
@@ -15,7 +16,7 @@ export function BiographySection() {
   const [content, setContent] = useState<BioContent | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost/myapp/api/get_biography.php")
+    fetch(apiUrl('get_biography.php'))
       .then((res) => res.json())
       .then((data) => setContent(data))
       .catch((err) => console.error("Error fetching biography:", err));
@@ -37,7 +38,7 @@ export function BiographySection() {
           >
             <div className="aspect-[4/3] sm:aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src={`http://localhost/myapp/uploads/${content.image_path}`}
+                src={mediaPath(`uploads/${content.image_path}`)}
                 alt={content.title || "Biography image"}
                 className="w-full h-full object-cover object-center"
                 loading="lazy"

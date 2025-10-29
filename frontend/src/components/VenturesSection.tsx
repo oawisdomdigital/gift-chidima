@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import { SectionWrapper } from './SectionWrapper';
+import { apiUrl, mediaPath } from '../lib/config';
 import { VentureCard } from './VentureCard';
 
 interface Venture {
@@ -14,7 +16,7 @@ export function VenturesSection() {
   const [subheading, setSubheading] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost/myapp/api/get_ventures.php')
+    fetch(apiUrl('get_ventures.php'))
       .then((res) => res.json())
       .then((data) => {
         setVentures(data.ventures || []);
@@ -39,7 +41,7 @@ export function VenturesSection() {
               key={index}
               name={venture.name}
               description={venture.description}
-              logoSrc={`http://localhost/myapp/${venture.logo}`}
+              logoSrc={mediaPath(venture.logo)}
               delay={index * 0.1}
             />
           ))}

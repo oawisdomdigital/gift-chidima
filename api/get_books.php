@@ -1,26 +1,26 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json");
-include('../db.php');
+require_once(__DIR__ . '/api.php');
 
-$base_url = "http://localhost/myapp/"; // adjust to your app's base URL
+try {
+    $sql = "SELECT * FROM books ORDER BY id DESC";
+    $result = $conn->query($sql);
+    
+    if (!$result) {
+        throw new Exception($conn->error);
+    }
 
-$sql = "SELECT * FROM books ORDER BY id DESC";
-$result = $conn->query($sql);
-
-$books = [];
-if ($result) {
+    $books = [];
     while ($row = $result->fetch_assoc()) {
         $row['key_lessons'] = json_decode($row['key_lessons'], true) ?: [];
-
-        // Make the cover_image and file_url fully accessible
-        $row['cover_image'] = $row['cover_image'] ? $base_url . $row['cover_image'] : null;
-        $row['file_url'] = $row['file_url'] ? $base_url . $row['file_url'] : null;
+        
+        // Return relative paths - frontend will handle URL construction
+        $row['cover_image'] = $row['cover_image'] ?: null;
+        $row['file_url'] = $row['file_url'] ?: null;
 
         $books[] = $row;
     }
-}
 
-echo json_encode($books);
-$conn->close();
-?>
+    sendResponse(['books' => $books]);
+} catch (Exception $e) {
+    sendError('Database error: ' . $e->getMessage());
+}

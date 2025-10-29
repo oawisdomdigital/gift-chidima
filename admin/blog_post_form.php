@@ -230,14 +230,11 @@ if ($editingId) {
   }
 }
 ?>
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>Blog Post Admin</title>
-  <link rel="stylesheet" href="../frontend/dist/index.css">
-  <style>
+<?php
+$page_title = 'Blog Post Admin';
+include 'includes/head.php';
+?>
+<style>
   /* Body & dark mode */
   body {
     font-family: Inter, system-ui, -apple-system, sans-serif;

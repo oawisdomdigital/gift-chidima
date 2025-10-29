@@ -10,24 +10,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if (empty($_POST['csrf_token']) || !hash_equals($_SESSION['login_csrf'], $_POST['csrf_token'])) {
     $err = 'Invalid request';
   } else {
-    $username = $_POST['username'] ?? '';
+    // Trim username to avoid accidental whitespace issues
+    $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
+    // Prepare statement and check for errors
     $stmt = $mysqli->prepare('SELECT id, username, password_hash, name FROM admin_users WHERE username = ? LIMIT 1');
-    $stmt->bind_param('s', $username);
-    $stmt->execute();
-    $res = $stmt->get_result();
-    if ($row = $res->fetch_assoc()) {
-      if (password_verify($password, $row['password_hash'])) {
-        // success
-        $_SESSION['admin_logged_in'] = true;
-        $_SESSION['admin_id'] = $row['id'];
-        $_SESSION['admin_name'] = $row['name'] ?: $row['username'];
-        header('Location: dashboard.php');
-        exit();
+    if (! $stmt) {
+      error_log('Login prepare failed: ' . $mysqli->error);
+      $err = 'Server error. Please try again later.';
+    } else {
+      $stmt->bind_param('s', $username);
+      if (! $stmt->execute()) {
+        error_log('Login execute failed: ' . $stmt->error);
+        $err = 'Server error. Please try again later.';
+      } else {
+        $res = $stmt->get_result();
+        $row = $res ? $res->fetch_assoc() : null;
+
+        if ($row) {
+          // Check password
+          if (password_verify($password, $row['password_hash'])) {
+            // success
+            if (session_status() === PHP_SESSION_NONE) session_start();
+            $_SESSION['admin_logged_in'] = true;
+            $_SESSION['admin_id'] = $row['id'];
+            $_SESSION['admin_name'] = $row['name'] ?: $row['username'];
+            header('Location: dashboard.php');
+            exit();
+          } else {
+            // Wrong password
+            error_log('Login failed: password_verify failed for user ' . $username);
+            $err = 'Invalid credentials';
+          }
+        } else {
+          // No such username
+          error_log('Login failed: no user found with username ' . $username);
+          $err = 'Invalid credentials';
+        }
       }
     }
-    $err = 'Invalid credentials';
   }
 }
 ?>
@@ -35,10 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Admin Login</title>
-  <link href="../frontend/dist/output.css" rel="stylesheet">
+<?php 
+$page_title = 'Admin Login';
+include 'includes/head.php'; 
+?>
 </head>
 <body class="bg-gray-50 flex items-center justify-center min-h-screen">
   <form method="POST" class="bg-white p-8 rounded shadow w-full max-w-md">

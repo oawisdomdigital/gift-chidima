@@ -75,9 +75,10 @@ $media = $conn->query("SELECT media_logo FROM awards WHERE media_logo IS NOT NUL
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Edit Awards Section</title>
-<link rel="stylesheet" href="../frontend/dist/index.css">
+<?php 
+$page_title = 'Edit Awards Section';
+include 'includes/head.php'; 
+?>
 <style>
 :root {
   --navy: #071731;

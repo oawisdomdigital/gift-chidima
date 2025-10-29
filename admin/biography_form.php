@@ -57,10 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin - Biography Section</title>
-  <link rel="stylesheet" href="../frontend/dist/index.css">
+<?php 
+$page_title = 'Biography Section';
+include 'includes/head.php'; 
+?>
   <style>
     :root {
       --gold: #d4af37;

@@ -3,6 +3,7 @@ import { Mail, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { useState } from 'react';
+import { apiUrl } from '../lib/config';
 
 export function NewsletterSignup() {
   const [name, setName] = useState('');
@@ -24,7 +25,7 @@ export function NewsletterSignup() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost/myapp/api/subscribe_newsletter.php', {
+      const res = await fetch(apiUrl('subscribe_newsletter.php'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email }),

@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import { Calendar, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
+import { apiUrl } from "../lib/config";
 
 export function FinalCTA() {
   const [cta, setCta] = useState<any>(null);
 
   useEffect(() => {
-    fetch("http://localhost/myapp/api/get_final_cta.php")
+  fetch(apiUrl('get_final_cta.php'))
       .then((res) => res.json())
       .then((data) => setCta(data))
       .catch((err) => console.error("Failed to fetch CTA:", err));

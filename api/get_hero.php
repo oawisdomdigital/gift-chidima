@@ -1,24 +1,38 @@
 <?php
-// ✅ Must be at the very top before any output or spaces
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
+// Explicit CORS headers (allow all origins for development)
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
+header('Access-Control-Allow-Credentials: true');
+header('Vary: Origin');
 
-// Include database
-include('../db.php');
+// Handle preflight requests
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(204);
+    exit();
+}
 
-$sql = "SELECT * FROM hero_section ORDER BY id DESC LIMIT 1";
-$result = $conn->query($sql);
+require_once('api.php');
 
-if ($result && $result->num_rows > 0) {
-  $row = $result->fetch_assoc();
-  // Construct absolute image path if present
-  if (!empty($row['image_path'])) {
-    $row['image'] = 'http://localhost/myapp/uploads/' . $row['image_path'];
-  }
-  echo json_encode($row);
-} else {
-  echo json_encode(['error' => 'No data found']);
+try {
+    $sql = "SELECT * FROM hero_section ORDER BY id DESC LIMIT 1";
+    $result = $conn->query($sql);
+    
+    if (!$result) {
+        throw new Exception($conn->error);
+    }
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        // Return the relative image path - frontend will handle URL construction
+        if (!empty($row['image_path'])) {
+            $row['image'] = 'uploads/' . $row['image_path'];
+        }
+        sendResponse($row);
+    } else {
+        sendError('No data found', 404);
+    }
+} catch (Exception $e) {
+    sendError('Database error: ' . $e->getMessage());
 }
 ?>

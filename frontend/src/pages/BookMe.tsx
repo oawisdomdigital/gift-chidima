@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../lib/config';
 import { motion } from 'framer-motion';
 import {
   Mail,
@@ -43,10 +44,6 @@ interface PageData {
   topics: Topic[];
 }
 
-// Initial state while loading
-// Note: Icons will come from the database
-const initialSpeakingTopics: Topic[] = [];
-
 export function BookMe() {
   const [pageData, setPageData] = useState<PageData>({
     sections: {},
@@ -71,7 +68,7 @@ export function BookMe() {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const response = await fetch('http://localhost/myapp/api/get_bookme.php');
+        const response = await fetch(apiUrl('get_bookme.php'));
         const result = await response.json();
         if (result.success) {
           setPageData(result.data);
@@ -91,7 +88,7 @@ export function BookMe() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('http://localhost/myapp/api/bookme_form.php', {
+      const response = await fetch(apiUrl('bookme_form.php'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

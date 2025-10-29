@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once('auth.php');
+require_once(__DIR__ . '/includes/auth.php');
 require_once('../db.php');
 
 // CSRF protection
@@ -96,71 +96,10 @@ if (isset($_SESSION['alert'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $isEdit ? 'Edit Advertisement' : 'Add New Advertisement'; ?> - Admin Dashboard</title>
-    <link href="../frontend/dist/index.css" rel="stylesheet">
-    <style>
-        /* Dark Mode */
-        body.dark-mode {
-            background-color: #0f172a;
-            color: #f1f5f9;
-        }
-
-        body.dark-mode .bg-white {
-            background-color: #1e293b !important;
-        }
-        body.dark-mode .text-gray-900 {
-            color: #f1f5f9 !important;
-        }
-        body.dark-mode .text-gray-700 {
-            color: #cbd5e1 !important;
-        }
-        body.dark-mode .text-gray-500 {
-            color: #94a3b8 !important;
-        }
-        body.dark-mode .bg-gray-100 {
-            background-color: #334155 !important;
-            color: #f1f5f9 !important;
-        }
-        body.dark-mode input,
-        body.dark-mode select,
-        body.dark-mode textarea {
-            background-color: #1e293b;
-            color: #f1f5f9;
-            border-color: #475569;
-        }
-        body.dark-mode input:focus,
-        body.dark-mode select:focus,
-        body.dark-mode textarea:focus {
-            border-color: #3b82f6;
-            ring-color: #3b82f6;
-        }
-        body.dark-mode .bg-green-50 {
-            background-color: #064e3b !important;
-            color: #a7f3d0 !important;
-            border-color: #065f46 !important;
-        }
-        body.dark-mode .bg-red-50 {
-            background-color: #7f1d1d !important;
-            color: #fecaca !important;
-            border-color: #991b1b !important;
-        }
-        body.dark-mode .file\:bg-blue-50 {
-            background-color: #1e3a8a !important;
-            color: #bfdbfe !important;
-        }
-        body.dark-mode .file\:hover\:bg-blue-100:hover {
-            background-color: #2563eb !important;
-        }
-        body.dark-mode .bg-blue-600 { background-color: #2563eb !important; }
-        body.dark-mode .bg-blue-600:hover { background-color: #1d4ed8 !important; }
-        body.dark-mode .bg-gray-100:hover { background-color: #475569 !important; }
-    </style>
-</head>
+<?php
+$page_title = $isEdit ? 'Edit Advertisement' : 'Add New Advertisement';
+include 'includes/head.php';
+?>
 <body class="bg-gray-50 <?= (isset($_SESSION['dark_mode']) && $_SESSION['dark_mode']) ? 'dark-mode' : '' ?>">
     <?php include __DIR__ . '/includes/header.php'; ?>
 

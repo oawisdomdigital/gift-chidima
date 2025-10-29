@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingCart, CheckCircle, Package } from 'lucide-react';
 import { Country, State, City } from 'country-state-city';
+import { mediaPath } from '../lib/config';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -163,7 +164,7 @@ export function BookModal({ book, onClose }: BookModalProps) {
             <div className="aspect-[3/4] max-w-sm mx-auto rounded-2xl mb-8 flex items-center justify-center relative overflow-hidden shadow-lg">
               {book.cover_image ? (
                 <img
-                  src={book.cover_image} // full URL from backend
+                  src={mediaPath(book.cover_image)}
                   alt={book.title}
                   className="w-full h-full object-cover rounded-2xl"
                 />

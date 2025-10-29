@@ -25,6 +25,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="ventures_form.php" class="block px-4 py-2 hover:bg-gray-100 rounded">Ventures</a>
             <a href="testimonials_form.php" class="block px-4 py-2 hover:bg-gray-100 rounded">Testimonials</a>
             <a href="final_cta_form.php" class="block px-4 py-2 hover:bg-gray-100 rounded">Final CTA</a>
+            <a href="footer_form.php" class="block px-4 py-2 hover:bg-gray-100 rounded">Footer</a>
           </div>
         </div>
 

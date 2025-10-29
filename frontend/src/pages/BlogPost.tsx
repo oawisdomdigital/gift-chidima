@@ -1,4 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { mediaPath } from '../lib/config';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock, Share2, Facebook, Linkedin, Twitter, Link2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -206,14 +207,14 @@ export function BlogPost() {
             {/* --- Featured Image --- */}
             <div className="aspect-[16/9] rounded-3xl overflow-hidden mb-12 shadow-2xl">
               <img
-                src={post.featuredImage || 'http://localhost/myapp/uploads/default_cover.png'}
+                src={post.featuredImage || mediaPath('uploads/default_cover.png')}
                 alt={post.title || 'Article image'}
                 className="w-full h-full object-cover"
                 loading="eager"
                 onError={(e) => {
                   const t = e.target as HTMLImageElement;
                   t.onerror = null;
-                  t.src = 'http://localhost/myapp/uploads/default_cover.png';
+                  t.src = mediaPath('uploads/default_cover.png');
                 }}
               />
             </div>

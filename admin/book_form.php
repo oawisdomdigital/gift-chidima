@@ -3,10 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 include('../db.php');
-if (empty($_SESSION['admin_id'])) { 
-  header('Location: login.php'); 
-  exit; 
-}
+require_once(__DIR__ . '/includes/auth.php');
 
 // Get existing book data if editing
 $book = null;

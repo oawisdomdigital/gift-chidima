@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('auth.php');
+require_once(__DIR__ . '/includes/auth.php');
 require_once('../db.php');
 
 if (isset($_GET['id'])) {

@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
+import { apiUrl } from '../lib/config';
 
 interface Comment {
   id: string;
@@ -29,7 +30,7 @@ export function CommentsSection({ postId }: CommentsSectionProps) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost/myapp/api/comments.php?post_id=${postId}`);
+  const response = await fetch(apiUrl(`comments.php?post_id=${postId}`));
         const data = await response.json();
         if (data.success && data.comments) {
           setComments(data.comments.map((c: any) => ({
@@ -70,7 +71,7 @@ export function CommentsSection({ postId }: CommentsSectionProps) {
 
       console.log('Sending data:', Object.fromEntries(formData));
 
-      const res = await fetch('http://localhost/myapp/api/comments.php', {
+  const res = await fetch(apiUrl('comments.php'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData,
@@ -209,7 +210,7 @@ export function CommentsSection({ postId }: CommentsSectionProps) {
         )}
 
         <AnimatePresence mode="popLayout">
-          {comments.map((c, i) => (
+          {comments.map((c) => (
             <motion.div
               key={c.id}
               initial={{ opacity: 0, y: 20 }}

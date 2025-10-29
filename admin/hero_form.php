@@ -53,9 +53,10 @@ $hero = $result->fetch_assoc();
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Hero Section</title>
-  <link rel="stylesheet" href="../frontend/dist/index.css">
+<?php 
+$page_title = 'Hero Section';
+include 'includes/head.php'; 
+?>
   <style>
     :root {
       --gold: #d4af37;

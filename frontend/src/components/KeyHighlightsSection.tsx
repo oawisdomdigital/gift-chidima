@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as Icons from 'lucide-react';
 import { SectionWrapper } from './SectionWrapper';
+import { apiUrl, mediaPath } from '../lib/config';
 import { IconCard } from './IconCard';
 
 interface HighlightItem {
@@ -21,7 +22,7 @@ export function KeyHighlightsSection() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost/myapp/api/get_highlights.php')
+    fetch(apiUrl('get_highlights.php'))
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch highlights');
         return res.json();
@@ -73,7 +74,7 @@ export function KeyHighlightsSection() {
 
               // ✅ Pass URL string or icon component name
               const iconProp = isImage
-                ? `http://localhost/myapp/${iconValue}`
+                ? mediaPath(iconValue)
                 : (Icons as any)[iconValue] || Icons.Building2;
 
               return (

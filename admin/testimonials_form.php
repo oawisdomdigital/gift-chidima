@@ -52,9 +52,10 @@ $testimonials = $result->fetch_all(MYSQLI_ASSOC);
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Testimonials Section</title>
-  <link rel="stylesheet" href="../frontend/dist/index.css">
+<?php 
+$page_title = 'Testimonials Section';
+include 'includes/head.php'; 
+?>
 
   <style>
     :root{

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../db.php');
-if (empty($_SESSION['admin_id'])) { header('Location: login.php'); exit; }
+require_once(__DIR__ . '/includes/auth.php');
 
 // Handle status update
 if (isset($_GET['update_status'])) {
@@ -32,12 +32,10 @@ function getStatusColor($status) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Booking Requests</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<?php
+$page_title = 'Booking Requests';
+include 'includes/head.php';
+?>
 <style>
 /* Dark mode variables */
 body.dark-mode {

@@ -1,4 +1,9 @@
 <?php 
+// Start session before any output
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 // admin/store_banner_form.php
 include('../db.php');
 
@@ -189,9 +194,10 @@ if ($editingId) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Manage Store Banner</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<?php 
+$page_title = 'Manage Store Banner';
+include 'includes/head.php'; 
+?>
 <style>
 :root {
   --navy: #071731;

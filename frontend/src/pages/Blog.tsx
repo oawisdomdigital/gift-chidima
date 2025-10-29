@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { mediaPath } from '../lib/config';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -6,8 +7,7 @@ import { BlogCard } from '../components/BlogCard';
 import { NewsletterSignup } from '../components/NewsletterSignup';
 import { Advertisement } from '../components/Advertisement';
 import { Button } from '../components/ui/button';
-import { getPosts, getFeaturedPost } from '../services/blogService';
-import type { BlogPost as BlogPostType } from '../services/blogService';
+import { getPosts, getFeaturedPost, type BlogPost as BlogPostType } from '../services/blogService';
 
 export function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -158,14 +158,14 @@ export function Blog() {
               >
                 <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                   <img
-                    src={featuredPost.featuredImage || 'http://localhost/myapp/uploads/default_cover.png'}
+                    src={featuredPost.featuredImage || mediaPath('uploads/default_cover.png')}
                     alt={featuredPost.title || 'Featured article'}
                     className="w-full h-full object-cover"
                     loading="eager"
                     onError={(e) => {
                       const t = e.target as HTMLImageElement;
                       t.onerror = null;
-                      t.src = 'http://localhost/myapp/uploads/default_cover.png';
+                      t.src = mediaPath('uploads/default_cover.png');
                     }}
                   />
                 </div>

@@ -1,21 +1,27 @@
 <?php
-// ✅ Must be at the very top before any output or spaces
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
+require_once __DIR__ . '/api.php';
 
-// Include database
-include('../db.php');
+try {
+    $sql = "SELECT * FROM biography_section ORDER BY id DESC LIMIT 1";
+    $result = $conn->query($sql);
+    
+    if (!$result) {
+        throw new Exception($conn->error);
+    }
 
-$sql = "SELECT * FROM biography_section ORDER BY id DESC LIMIT 1";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    echo json_encode($result->fetch_assoc());
-} else {
-    echo json_encode(null);
+    if ($result->num_rows > 0) {
+        $data = $result->fetch_assoc();
+        // Handle any image paths if present
+        if (!empty($data['image'])) {
+            $data['image'] = 'uploads/' . $data['image'];
+        }
+        sendResponse($data);
+    } else {
+        sendResponse(null);
+    }
+} catch (Exception $e) {
+    sendError('Database error: ' . $e->getMessage());
+} finally {
+    $conn->close();
 }
-
-$conn->close();
 ?>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { apiUrl, mediaPath } from '../lib/config';
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 
@@ -12,6 +13,9 @@ interface HeroContent {
   button_text?: string;
   button_link?: string;
   image_path?: string;
+  title_line1?: string;
+  title_line2?: string;
+  subtitle?: string;
 }
 
 
@@ -19,7 +23,7 @@ export function HeroSection() {
   const [content, setContent] = useState<HeroContent | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost/myapp/api/get_hero.php")
+    fetch(apiUrl('get_hero.php'))
       .then((res) => res.json())
       .then((data) => setContent(data))
       .catch((err) => console.error("Error fetching hero content:", err));
@@ -124,7 +128,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* IMAGE SECTION */}
-          {content.image && (
+          {content.image_path && (
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -148,7 +152,7 @@ export function HeroSection() {
                   <div className="relative">
                     <div className="aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl border-4 border-white dark:border-surface-2">
                       <img
-                        src={`http://localhost/myapp/uploads/${content.image_path}`}
+                        src={mediaPath(`uploads/${content.image_path}`)}
                         alt={content.name || "Hero Image"}
                         className="w-full h-full object-cover object-center"
                         loading="eager"

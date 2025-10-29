@@ -1,13 +1,22 @@
 <?php
-require_once('../db.php');
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Handle preflight OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+require_once __DIR__ . '/api.php';
 if (session_status() === PHP_SESSION_NONE) session_start();
 if (empty($_SESSION['admin_logged_in'])) {
     http_response_code(401);
     echo json_encode(['success' => false, 'message' => 'Unauthorized']);
     exit();
 }
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
+// Content-Type and CORS handled by api.php/cors.php
 
 $type = $_GET['type'] ?? 'all';
 $start = $_GET['start_date'] ?? null; // YYYY-MM-DD

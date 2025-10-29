@@ -1,15 +1,10 @@
-session_start();
 <?php
 // Start session before any output
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 require_once('../db.php');
-
-if (empty($_SESSION['admin_id'])) {
-    header('Location: login.php');
-    exit;
-}
+require_once(__DIR__ . '/includes/auth.php');
 
 if (isset($_GET['id'])) {
     $id = intval($_GET['id']);

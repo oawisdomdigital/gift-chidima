@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../api/config.php';
-if (empty($_SESSION['admin_id'])) { header('Location: login.php'); exit; }
+require_once(__DIR__ . '/includes/auth.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'] ?? '';
@@ -31,7 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>Add Book</title>
+<head>
+<?php 
+$page_title = 'Add Book';
+include 'includes/head.php'; 
+?>
   <link rel="stylesheet" href="../frontend/dist/index.css">
   </head>
 <body>

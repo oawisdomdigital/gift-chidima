@@ -1,0 +1,26 @@
+<IfModule mod_headers.c>Header set Access-Control-Allow-Origin "http://localhost:5173"
+
+    # DevelopmentHeader set Access-Control-Allow-Methods "GET, OPTIONS"
+
+    SetEnvIf Origin "http://localhost:5173" ALLOWED_ORIGIN=$0Header set Access-Control-Allow-Headers "*"
+
+    # Production
+    SetEnvIf Origin "https://gift.infinityfree.me" ALLOWED_ORIGIN=$0
+    
+    Header always set Access-Control-Allow-Origin %{ALLOWED_ORIGIN}e env=ALLOWED_ORIGIN
+    Header always set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header always set Access-Control-Allow-Headers "*"
+    
+    # Remove other CORS headers that might be set elsewhere
+    Header unset Access-Control-Allow-Origin env=!ALLOWED_ORIGIN
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Allow specific file types
+<FilesMatch "\.(jpg|jpeg|png|gif|mp4|pdf|doc|docx)$">
+    <IfModule mod_headers.c>
+        Header set Cache-Control "max-age=31536000, public"
+    </IfModule>
+</FilesMatch>

@@ -12,4 +12,14 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  // Dev server proxy: forward /api requests to the remote backend to avoid CORS while developing locally
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

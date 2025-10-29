@@ -63,11 +63,10 @@ $ventures = $result->fetch_all(MYSQLI_ASSOC);
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Edit Ventures Section</title>
-
-  <!-- your global compiled css -->
-  <link rel="stylesheet" href="../frontend/dist/index.css">
+<?php 
+$page_title = 'Edit Ventures Section';
+include 'includes/head.php'; 
+?>
 
   <style>
     :root{

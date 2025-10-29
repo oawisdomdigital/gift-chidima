@@ -11,7 +11,7 @@ interface GalleryItemProps {
 
 export function GalleryItem({ media, index, onClick }: GalleryItemProps) {
   const isVideo = media.type === "video";
-  const isEmbedded = media.is_embedded === 1 || media.is_embedded === "1";
+  const isEmbedded = Boolean(media.is_embedded);
 
   const [videoThumbnail, setVideoThumbnail] = useState<string>("");
   const [thumbnailExists, setThumbnailExists] = useState<boolean>(false);
@@ -229,7 +229,8 @@ function normalizePath(path: string): string {
     return path;
   }
 
-  // Otherwise treat as a local file path
-  return `http://localhost/myapp/api/serve_media.php?file=${encodeURIComponent(path)}`;
+  // Otherwise treat as a local file path and use a relative URL (no hard-coded host)
+  // This returns a path relative to the app root so it works in different environments.
+  return `../api/serve_media.php?file=${encodeURIComponent(path)}`;
 }
 

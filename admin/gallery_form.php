@@ -68,9 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Upload Gallery Media</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<?php 
+$page_title = 'Upload Gallery Media';
+include 'includes/head.php'; 
+?>
 <style>
 body {
     font-family: Arial, sans-serif;

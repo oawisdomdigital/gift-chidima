@@ -1,15 +1,16 @@
 <?php
-require_once('auth.php');
+// Start session before any output
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 ?>
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin Dashboard - Dr. Gift</title>
-
-  <!-- Tailwind or compiled CSS -->
-  <link href="../frontend/dist/index.css" rel="stylesheet">
+  <?php 
+  $page_title = 'Admin Dashboard - Dr. Gift';
+  include 'includes/head.php'; 
+  ?>
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -4,14 +4,21 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SectionWrapper } from './SectionWrapper';
 import { TestimonialCard } from './TestimonialCard';
 import { Button } from './ui/button';
+import { apiUrl } from '../lib/config';
 
 export function TestimonialsSection() {
+interface Testimonial {
+  quote: string;
+  author: string;
+  role: string;
+}
+
   const [heading, setHeading] = useState('');
   const [subheading, setSubheading] = useState('');
-  const [testimonials, setTestimonials] = useState([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost/myapp/api/get_testimonials.php')
+  fetch(apiUrl('get_testimonials.php'))
       .then(res => res.json())
       .then(data => {
         setHeading(data.heading || '');
@@ -36,7 +43,9 @@ export function TestimonialsSection() {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on('select', onSelect);
-    return () => emblaApi.off('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   return (

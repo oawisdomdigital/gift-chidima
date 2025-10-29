@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { cn } from '../lib/utils';
+import { apiUrl, mediaPath } from '../lib/config';
 
 interface AdData {
   id: number;
@@ -34,11 +35,8 @@ export function Advertisement({ type, className }: AdvertisementProps) {
     const fetchAd = async () => {
       try {
         setLoading(true);
-        const url = new URL('http://localhost/myapp/api/get_ad.php');
-        url.searchParams.append('type', type);
-
-        const response = await fetch(url.toString());
-        const data = await response.json();
+  const response = await fetch(apiUrl(`get_ad.php?type=${type}`));
+  const data = await response.json();
 
         if (data.success && data.data) {
           setAd(data.data);
@@ -61,7 +59,7 @@ export function Advertisement({ type, className }: AdvertisementProps) {
 
   const getFullImageUrl = (path: string | null): string => {
     if (!path) return '';
-    return `http://localhost/myapp/${path.replace(/^\/+/, '')}`;
+    return mediaPath(path.replace(/^\/+/, ''));
   };
 
   const AdContent = () => (
@@ -79,7 +77,7 @@ export function Advertisement({ type, className }: AdvertisementProps) {
             onError={(e) => {
               const t = e.target as HTMLImageElement;
               t.onerror = null;
-              t.src = 'http://localhost/myapp/uploads/default_cover.png';
+              t.src = mediaPath('uploads/default_cover.png');
             }}
           />
         )}

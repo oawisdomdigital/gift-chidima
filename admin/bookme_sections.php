@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../db.php');
-if (empty($_SESSION['admin_id'])) { header('Location: login.php'); exit; }
+require_once(__DIR__ . '/includes/auth.php');
 
 $section_keys = ['hero', 'topics', 'contact', 'direct_inquiries'];
 
@@ -47,9 +47,10 @@ function e($v) { return htmlspecialchars($v ?? '', ENT_QUOTES, 'UTF-8'); }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Manage Book Me Sections</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<?php 
+$page_title = 'Manage Book Me Sections';
+include 'includes/head.php'; 
+?>
 <style>
 /* Root variables */
 :root {

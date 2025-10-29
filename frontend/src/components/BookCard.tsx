@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
 import { Button } from "./ui/button";
 import { Book } from "../pages/Store";
+import { mediaPath } from "../lib/config";
 
 interface BookCardProps {
   book: Book;
@@ -24,7 +25,11 @@ export function BookCard({ book, delay = 0, onBuyNow }: BookCardProps) {
           <div className="aspect-[3/4] relative overflow-hidden">
             {book.cover_image ? (
               <img
-                src={book.cover_image}
+                src={
+                  book.cover_image.startsWith('http')
+                    ? book.cover_image
+                    : mediaPath(book.cover_image.replace(/^\/+/, ''))
+                }
                 alt={book.title}
                 className="w-full h-full object-cover"
               />

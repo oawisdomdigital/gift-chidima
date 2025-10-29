@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../db.php';
-if (empty($_SESSION['admin_id'])) { header('Location: login.php'); exit; }
+require_once(__DIR__ . '/includes/auth.php');
 
 $result = $mysqli->query("SELECT * FROM books ORDER BY created_at DESC");
 $books = [];
@@ -22,12 +22,10 @@ if (isset($_GET['msg']) && $_GET['msg'] === 'deleted') {
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Books | Admin Panel</title>
-
-  <link rel="stylesheet" href="../frontend/dist/index.css">
-  <link rel="stylesheet" href="https://laravelui.spruko.com/ynex/assets/css/style.css" />
-  <link rel="stylesheet" href="https://laravelui.spruko.com/ynex/assets/css/icons.css" />
+<?php 
+$page_title = 'Books Management';
+include 'includes/head.php'; 
+?>
 
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 

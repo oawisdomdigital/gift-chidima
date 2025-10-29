@@ -1,9 +1,15 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Content-Type: application/json");
-include('../db.php');
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+// Handle preflight OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+require_once __DIR__ . '/api.php';
 
 // Get the latest banner (or you can select a specific one by ID)
 $bannerQuery = $conn->query("SELECT * FROM store_banner ORDER BY id DESC LIMIT 1");

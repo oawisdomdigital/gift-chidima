@@ -1,0 +1,196 @@
+[28-Oct-2025 22:48:18 UTC] 2025-10-28 22:48:18 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 22:48:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 22:48:18 UTC] 2025-10-28 22:48:18 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 22:48:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:00:44 UTC] 2025-10-28 23:00:44 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:00:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:03:25 UTC] 2025-10-28 23:03:25 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:03:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:03:28 UTC] 2025-10-28 23:03:28 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:03:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:03:49 UTC] 2025-10-28 23:03:49 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:03:49 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:04:44 UTC] 2025-10-28 23:04:44 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:04:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:06:32 UTC] 2025-10-28 23:06:32 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:06:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:06:32 UTC] 2025-10-28 23:06:32 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:06:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:06:40 UTC] 2025-10-28 23:06:40 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:06:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:11:17 UTC] 2025-10-28 23:11:17 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:11:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:11:17 UTC] 2025-10-28 23:11:17 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:11:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:11:35 UTC] 2025-10-28 23:11:35 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:11:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:11:35 UTC] 2025-10-28 23:11:35 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:11:35 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:11:56 UTC] 2025-10-28 23:11:56 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:11:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:11:56 UTC] 2025-10-28 23:11:56 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:11:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:12:15 UTC] 2025-10-28 23:12:15 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:12:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:12:15 UTC] 2025-10-28 23:12:15 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:12:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:12:32 UTC] 2025-10-28 23:12:32 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:12:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:12:33 UTC] 2025-10-28 23:12:33 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:12:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:13:11 UTC] 2025-10-28 23:13:11 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:13:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:13:11 UTC] 2025-10-28 23:13:11 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:13:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:13:23 UTC] 2025-10-28 23:13:23 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:13:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:13:23 UTC] 2025-10-28 23:13:23 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:13:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:13:26 UTC] 2025-10-28 23:13:26 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:13:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:13:26 UTC] 2025-10-28 23:13:26 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:13:26 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:16:52 UTC] 2025-10-28 23:16:52 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:16:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+[28-Oct-2025 23:16:52 UTC] 2025-10-28 23:16:52 - Uncaught Exception: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
+Stack trace: #0 {main}
+
+[28-Oct-2025 23:16:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMediaUrl() in C:\xampp\htdocs\myapp\api\get_ventures.php:26
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\myapp\api\get_ventures.php on line 26
